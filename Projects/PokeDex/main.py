@@ -1,9 +1,9 @@
-from PIL import Image
+from PIL import Image, ImageFilter
 
-img = Image.open('./testImages/pikachu.jpg')
+img = Image.open('./testImages/cake.jpg')
 
-for i in dir(img):
-    print(i)
-#print(dir(img))
+img.thumbnail((1024, 1024))
 
-print()
+img.show()
+
+print(img.size)
