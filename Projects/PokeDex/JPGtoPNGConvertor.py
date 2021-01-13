@@ -5,7 +5,6 @@ import os
 
 def get_dest_file_name(dest, file):
     dest_file = dest + os.path.splitext(file)[0] + '.png'
-
     seq = 0
     while os.path.exists(dest_file):
         dest_file = dest + os.path.splitext(file)[0] + str(seq) + '.png'
@@ -22,6 +21,7 @@ except IndexError as e:
 
 if not os.path.exists(source):
     print(source + 'doesn\'t exist')
+    exit(-1)
 
 if not os.path.exists(dest):
     os.mkdir(dest)
@@ -32,3 +32,4 @@ for file in os.listdir(source):
         img = Image.open(file_abs)
         dest_file = get_dest_file_name(dest, file)
         img.save(dest_file, format='png')
+        print(file + ' Done')
